@@ -1,25 +1,31 @@
-package com.example.android.interpolatorplayground
+package com.example.android.interpolatorplayground;
 
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        fun openLink(url: String) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
+        setupButton(R.id.btnWhatsapp, "https://wa.me/");
+        setupButton(R.id.btnInstagram, "https://instagram.com/");
+        setupButton(R.id.btnFacebook, "https://facebook.com/");
+        setupButton(R.id.btnDana, "https://dana.id/");
+        setupButton(R.id.btnGopay, "https://gopay.co.id/");
+    }
+
+    private void setupButton(int id, final String url) {
+        Button btn = findViewById(id);
+        if (btn != null) {
+            btn.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            });
         }
-
-        findViewById<Button>(R.id.btnWhatsapp)?.setOnClickListener { openLink("https://wa.me/") }
-        findViewById<Button>(R.id.btnInstagram)?.setOnClickListener { openLink("https://instagram.com/") }
-        findViewById<Button>(R.id.btnFacebook)?.setOnClickListener { openLink("https://facebook.com/") }
-        findViewById<Button>(R.id.btnDana)?.setOnClickListener { openLink("https://dana.id/") }
-        findViewById<Button>(R.id.btnGopay)?.setOnClickListener { openLink("https://gopay.co.id/") }
     }
 }
