@@ -1,95 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2016 The Android Open Source Project
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-          http://www.apache.org/licenses/LICENSE-2.0
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
-<LinearLayout
-    android:id="@+id/activity_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.com.interpolatorplayground.com.example.com.interpolatorplayground.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".6"
-            android:id="@+id/spinner"
-            android:entries="@array/interpolators"
-            android:layout_margin="4dp"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".4"
-            android:id="@+id/runButton"
-            android:text="Run"
-            android:onClick="runAnimation"/>
-
-    </LinearLayout>
+    android:padding="16dp"
+    android:background="#F8F9FA">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:text="Duration 300ms"
-            android:id="@+id/durationLabel"/>
+            android:text="hhn0102 Multi Hub"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#111111"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
 
-        <SeekBar
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:max="2000"
-            android:progress="300"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/durationSeeker"/>
+            android:text="💬 Pesan &amp; WhatsApp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnWhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buka WhatsApp"
+            android:backgroundTint="#25D366"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🌐 Sosial Media"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnInstagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instagram"
+            android:backgroundTint="#E1306C"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facebook"
+            android:backgroundTint="#1877F2"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💳 E-Wallet &amp; Pembayaran"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#D84315"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnDana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DANA E-Wallet"
+            android:backgroundTint="#118EEA"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnGopay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GoPay / Gojek"
+            android:backgroundTint="#00AA13"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout"/>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:id="@+id/linearLayout2"
-        android:orientation="horizontal"
-        android:background="#fff"
-        android:layout_margin="4dp"/>
-
-    <com.example.android.interpolatorplayground.TimingVisualizer
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/timingVisualizer"
-        android:background="#fff"
-        android:layout_margin="4dp"/>
-
-
-
-</LinearLayout>
+</ScrollView>
