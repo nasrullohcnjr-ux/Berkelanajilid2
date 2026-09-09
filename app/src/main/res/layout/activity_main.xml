@@ -3,94 +3,244 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#F8F9FA">
+    android:background="#F4F6F9">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Header -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hhn0102 Multi Hub"
+            android:text="hhn0102 Multi Hub &amp; Store"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#111111"
+            android:textColor="#1A237E"
             android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="16dp" />
 
+        <!-- Pintasan Cepat -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="💬 Pesan &amp; WhatsApp"
+            android:text="⚡ Pintasan Cepat"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#2E7D32"
+            android:textColor="#333333"
             android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/btnWhatsapp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buka WhatsApp"
-            android:backgroundTint="#25D366"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="20dp" />
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginBottom="8dp">
 
+            <Button
+                android:id="@+id/btnWhatsapp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="WhatsApp"
+                android:textSize="11sp"
+                android:backgroundTint="#25D366"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnInstagram"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Instagram"
+                android:textSize="11sp"
+                android:backgroundTint="#E1306C"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnFacebook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Facebook"
+                android:textSize="11sp"
+                android:backgroundTint="#1877F2"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnDana"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="DANA E-Wallet"
+                android:textSize="12sp"
+                android:backgroundTint="#118EEA"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnGopay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="GoPay / Gojek"
+                android:textSize="12sp"
+                android:backgroundTint="#00AA13"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Katalog Produk -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🌐 Sosial Media"
-            android:textSize="16sp"
+            android:text="📦 Katalog Produk &amp; Order"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#1565C0"
-            android:layout_marginBottom="8dp" />
+            android:textColor="#1A237E"
+            android:layout_marginBottom="12dp" />
 
-        <Button
-            android:id="@+id/btnInstagram"
+        <!-- Produk 1 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Instagram"
-            android:backgroundTint="#E1306C"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="8dp" />
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp">
 
-        <Button
-            android:id="@+id/btnFacebook"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paket Hemat Frozen Food A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#222222" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isi: Sosis Sapi + Nugget Ayam + Otak-Otak"
+                android:textSize="13sp"
+                android:textColor="#666666"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 35.000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#D32F2F"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnOrder1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🛒 Order via WhatsApp"
+                android:backgroundTint="#25D366"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Produk 2 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Facebook"
-            android:backgroundTint="#1877F2"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="20dp" />
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="💳 E-Wallet &amp; Pembayaran"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#D84315"
-            android:layout_marginBottom="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paket Sosis &amp; Nugget Premium"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#222222" />
 
-        <Button
-            android:id="@+id/btnDana"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isi: Nugget Keju Premium + Sosis Jumbo Bakar"
+                android:textSize="13sp"
+                android:textColor="#666666"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 55.000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#D32F2F"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnOrder2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🛒 Order via WhatsApp"
+                android:backgroundTint="#25D366"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Produk 3 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DANA E-Wallet"
-            android:backgroundTint="#118EEA"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="8dp" />
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="16dp">
 
-        <Button
-            android:id="@+id/btnGopay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="GoPay / Gojek"
-            android:backgroundTint="#00AA13"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paket Komplit Bakso &amp; Dimsum"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#222222" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isi: Dimsum Ayam Mix 10 Pcs + Bakso Sapi Urat"
+                android:textSize="13sp"
+                android:textColor="#666666"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 75.000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#D32F2F"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnOrder3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🛒 Order via WhatsApp"
+                android:backgroundTint="#25D366"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
