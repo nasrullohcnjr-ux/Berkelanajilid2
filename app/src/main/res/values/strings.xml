@@ -12,7 +12,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">InterpolatorPlayground</string>
+    <string name="app_name">hhn0102</string>
     <string-array name="interpolators">
         <item>Linear</item>
         <item>Accelerate</item>
