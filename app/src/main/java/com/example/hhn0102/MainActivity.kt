@@ -1,9 +1,14 @@
 package com.example.hhn0102
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.net.URLEncoder
 
@@ -12,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Nomor WhatsApp Admin Toko (Ganti dengan nomor WA kamu, gunakan kode negara 62)
+        // Nomor WhatsApp Admin Toko
         val adminWA = "6281234567890"
 
         fun openUrl(url: String) {
@@ -25,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         fun orderViaWA(productName: String, price: String) {
-            val message = "Halo Admin hhn0102, saya mau pesan:\n- Produk: $productName\n- Harga: $price\nMohon informasi selanjutnya."
+            val message = "Halo Admin hhn0102, saya mau pesan:\n- Produk: $productName\n- Harga: $price\nMohon informasi pembayarannya."
             val encodedMessage = URLEncoder.encode(message, "UTF-8")
             val waUrl = "https://wa.me/$adminWA?text=$encodedMessage"
             openUrl(waUrl)
@@ -37,6 +42,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnFacebook)?.setOnClickListener { openUrl("https://facebook.com/") }
         findViewById<Button>(R.id.btnDana)?.setOnClickListener { openUrl("https://dana.id/") }
         findViewById<Button>(R.id.btnGopay)?.setOnClickListener { openUrl("https://gopay.co.id/") }
+
+        // Fitur Salin Rekening
+        findViewById<Button>(R.id.btnSalinRekening)?.setOnClickListener {
+            val noRek = findViewById<TextView>(R.id.tvRekening)?.text.toString()
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Nomor Rekening", noRek)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "Nomor rekening berhasil disalin!", Toast.LENGTH_SHORT).show()
+        }
 
         // Tombol Order Katalog
         findViewById<Button>(R.id.btnOrder1)?.setOnClickListener { 

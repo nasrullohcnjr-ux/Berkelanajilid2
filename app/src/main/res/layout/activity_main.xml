@@ -142,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="E-Wallet &amp; Payment"
+                    android:text="E-Wallet &amp; Payment App"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:textColor="#78909C"
@@ -177,6 +177,92 @@
                         android:backgroundTint="#00AA13"
                         android:textColor="#FFFFFF" />
                 </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section Informasi Pembayaran / QRIS -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💳 Pembayaran &amp; Rekening Bank"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#37474F"
+            android:layout_marginBottom="10dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏦 Bank BCA"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#0D47A1" />
+
+                <TextView
+                    android:id="@+id/tvRekening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1234567890"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_marginTop="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="a.n. Owner hhn0102"
+                    android:textSize="13sp"
+                    android:textColor="#616161"
+                    android:layout_marginBottom="10dp" />
+
+                <Button
+                    android:id="@+id/btnSalinRekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📋 Salin Nomor Rekening"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#37474F"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📲 QRIS &amp; E-Wallet"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#D84315" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Menerima transfer via QRIS, DANA, GoPay, OVO, ShopeePay (No: 081234567890)"
+                    android:textSize="13sp"
+                    android:textColor="#616161"
+                    android:layout_marginTop="2dp" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
