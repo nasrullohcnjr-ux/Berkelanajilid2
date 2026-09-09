@@ -1,4 +1,4 @@
-package com.example.hhn0102
+package com.hhn0102.app
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Nomor WhatsApp Admin Toko (Menggunakan kode negara 62)
         val adminWA = "6281234567890"
 
         fun openUrl(url: String) {

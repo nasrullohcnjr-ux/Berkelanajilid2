@@ -4,20 +4,31 @@ plugins {
 }
 
 android {
-    namespace 'com.example.hhn0102'
+    namespace 'com.hhn0102.app'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.hhn0102"
+        applicationId "com.hhn0102.app"
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('hhn0102-release.keystore')
+            storePassword 'hhn0102pass'
+            keyAlias 'hhn0102key'
+            keyPassword 'hhn0102pass'
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
