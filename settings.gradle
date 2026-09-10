@@ -1,2 +1,4 @@
+cp app/build/outputs/apk/debug/app-debug.apk ./hhn0102.apk
+
 include ':app'
 rootProject.name = "Berkelanajilid2"
