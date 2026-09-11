@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="192dp"
+    android:height="192dp"
+    android:viewportWidth="192"
+    android:viewportHeight="192">
+    
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#1A237E"
+        android:pathData="M96,0 C149.3,0 192,42.7 192,96 C192,149.3 149.3,192 96,192 C42.7,192 0,149.3 0,96 C0,42.7 42.7,0 96,0 Z" />
+    
+    <!-- Shopping Bag Icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M64,56 L64,40 C64,30.6 72.6,22 82,22 L110,22 C119.4,22 128,30.6 128,40 L128,56 L140,56 C147.7,56 154,62.3 154,70 L154,160 C154,167.7 147.7,174 140,174 L52,174 C44.3,174 38,167.7 38,160 L38,70 C38,62.3 44.3,56 52,56 L64,56 Z M80,56 L112,56 L112,40 C112,36.7 109.3,34 106,34 L86,34 C82.7,34 80,36.7 80,40 L80,56 Z M96,100 C100.4,100 104,96.4 104,92 C104,87.6 100.4,84 96,84 C91.6,84 88,87.6 88,92 C88,96.4 91.6,100 96,100 Z" />
+</vector>
