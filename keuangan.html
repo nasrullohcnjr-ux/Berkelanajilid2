@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Catatan Keuangan</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 16px; max-width: 500px; margin: 0 auto; }
+    
+    h1 { text-align: center; margin-bottom: 20px; font-size: 1.4rem; color: #0f172a; }
+    
+    .summary-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .card { background: var(--card); padding: 14px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .card.full { grid-column: span 2; text-align: center; }
+    .card label { font-size: 0.8rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+    .card .amount { font-size: 1.25rem; font-weight: bold; margin-top: 4px; }
+    .amount.balance { color: var(--primary); font-size: 1.5rem; }
+    .amount.income { color: var(--success); }
+    .amount.expense { color: var(--danger); }
+    
+    .form-container { background: var(--card); padding: 16px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 20px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.85rem; margin-bottom: 4px; font-weight: 600; }
+    .form-control { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; outline: none; }
+    .form-control:focus { border-color: var(--primary); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    
+    .btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.2s; }
+    .btn:hover { background: #1d4ed8; }
+    
+    .history { background: var(--card); padding: 16px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .history h2 { font-size: 1.05rem; margin-bottom: 12px; color: #334155; }
+    .item-list { list-style: none; }
+    .item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+    .item:last-child { border-bottom: none; }
+    .item-info { display: flex; flex-direction: column; }
+    .item-title { font-weight: 600; font-size: 0.95rem; }
+    .item-date { font-size: 0.75rem; color: #94a3b8; }
+    .item-amount { font-weight: bold; font-size: 0.95rem; }
+    .income-text { color: var(--success); }
+    .expense-text { color: var(--danger); }
+    .btn-delete { background: none; border: none; color: #cbd5e1; cursor: pointer; font-size: 1.1rem; margin-left: 10px; }
+    .btn-delete:hover { color: var(--danger); }
+    .empty-state { text-align: center; color: #94a3b8; font-size: 0.85rem; padding: 10px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>Catatan Keuangan</h1>
+
+  <!-- Ringkasan Keuangan -->
+  <div class="summary-cards">
+    <div class="card full">
+      <label>Sisa Saldo</label>
+      <div class="amount balance" id="totalBalance">Rp 0</div>
+    </div>
+    <div class="card">
+      <label>Pemasukan</label>
+      <div class="amount income" id="totalIncome">Rp 0</div>
+    </div>
+    <div class="card">
+      <label>Pengeluaran</label>
+      <div class="amount expense" id="totalExpense">Rp 0</div>
+    </div>
+  </div>
+
+  <!-- Form Input Transaksi -->
+  <div class="form-container">
+    <form id="financeForm">
+      <div class="form-group">
+        <label>Keterangan / Deskripsi</label>
+        <input type="text" id="desc" class="form-control" placeholder="Contoh: Penjualan Harian, Bayar Listrik" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nominal (Rp)</label>
+          <input type="number" id="amount" class="form-control" placeholder="0" required min="1">
+        </div>
+        <div class="form-group">
+          <label>Jenis</label>
+          <select id="type" class="form-control">
+            <option value="income">Pemasukan (+)</option>
+            <option value="expense">Pengeluaran (-)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tanggal</label>
+        <input type="date" id="date" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn">Simpan Transaksi</button>
+    </form>
+  </div>
+
+  <!-- Riwayat Transaksi -->
+  <div class="history">
+    <h2>Riwayat Transaksi</h2>
+    <ul id="itemList" class="item-list">
+      <li class="empty-state">Belum ada catatan transaksi.</li>
+    </ul>
+  </div>
+
+  <script>
+    const form = document.getElementById('financeForm');
+    const descInput = document.getElementById('desc');
+    const amountInput = document.getElementById('amount');
+    const typeInput = document.getElementById('type');
+    const dateInput = document.getElementById('date');
+    
+    const totalBalanceEl = document.getElementById('totalBalance');
+    const totalIncomeEl = document.getElementById('totalIncome');
+    const totalExpenseEl = document.getElementById('totalExpense');
+    const itemListEl = document.getElementById('itemList');
+
+    // Set tanggal hari ini secara otomatis
+    dateInput.valueAsDate = new Date();
+
+    // Data Transaksi dari LocalStorage
+    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+    function formatRupiah(number) {
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+    }
+
+    function updateSummary() {
+      const amounts = transactions.map(t => t.type === 'income' ? t.amount : -t.amount);
+      const total = amounts.reduce((acc, item) => (acc += item), 0);
+      
+      const income = transactions
+        .filter(t => t.type === 'income')
+        .reduce((acc, t) => (acc += t.amount), 0);
+
+      const expense = transactions
+        .filter(t => t.type === 'expense')
+        .reduce((acc, t) => (acc += t.amount), 0);
+
+      totalBalanceEl.innerText = formatRupiah(total);
+      totalIncomeEl.innerText = formatRupiah(income);
+      totalExpenseEl.innerText = formatRupiah(expense);
+    }
+
+    function renderList() {
+      itemListEl.innerHTML = '';
+
+      if (transactions.length === 0) {
+        itemListEl.innerHTML = '<li class="empty-state">Belum ada catatan transaksi.</li>';
+        return;
+      }
+
+      transactions.forEach((t, index) => {
+        const li = document.createElement('li');
+        li.className = 'item';
+        
+        const isIncome = t.type === 'income';
+        const sign = isIncome ? '+' : '-';
+        const amountClass = isIncome ? 'income-text' : 'expense-text';
+
+        li.innerHTML = `
+          <div class="item-info">
+            <span class="item-title">${t.desc}</span>
+            <span class="item-date">${t.date}</span>
+          </div>
+          <div>
+            <span class="item-amount ${amountClass}">${sign} ${formatRupiah(t.amount)}</span>
+            <button class="btn-delete" onclick="deleteTransaction(${index})">&times;</button>
+          </div>
+        `;
+        itemListEl.appendChild(li);
+      });
+    }
+
+    function addTransaction(e) {
+      e.preventDefault();
+
+      const newTransaction = {
+        id: Date.now(),
+        desc: descInput.value,
+        amount: parseFloat(amountInput.value),
+        type: typeInput.value,
+        date: dateInput.value
+      };
+
+      transactions.unshift(newTransaction);
+      saveData();
+      
+      descInput.value = '';
+      amountInput.value = '';
+      dateInput.valueAsDate = new Date();
+    }
+
+    function deleteTransaction(index) {
+      transactions.splice(index, 1);
+      saveData();
+    }
+
+    function saveData() {
+      localStorage.setItem('transactions', JSON.stringify(transactions));
+      updateSummary();
+      renderList();
+    }
+
+    form.addEventListener('submit', addTransaction);
+
+    // Inisialisasi Tampilan awal
+    updateSummary();
+    renderList();
+  </script>
+</body>
+</html>
