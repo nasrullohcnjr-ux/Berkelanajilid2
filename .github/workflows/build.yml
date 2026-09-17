@@ -13,11 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js (v22)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Set up Java JDK
         uses: actions/setup-java@v4
@@ -32,8 +31,7 @@ jobs:
         run: npm run build
 
       - name: Ensure Capacitor Config & Android Sync
-        run: |
-          npx cap sync android
+        run: npx cap sync android
 
       - name: Make Gradlew Executable
         run: chmod +x android/gradlew
